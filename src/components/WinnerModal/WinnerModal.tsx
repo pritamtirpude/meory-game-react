@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { cn } from '../../lib/util';
 import { useMemoryStore } from '../../store/game-store';
@@ -34,8 +35,24 @@ const WinnerModal = () => {
   };
 
   return (
-    <div className="fixed flex size-full min-h-screen flex-col items-center justify-center bg-black/75">
-      <div className="bg-tail-zinc-50 w-[85%] rounded-2xl p-6 md:max-w-[654px] md:p-14">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+      exit={{ opacity: 0 }}
+      className="fixed flex size-full min-h-screen flex-col items-center justify-center bg-black/75"
+    >
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.3,
+          delay: 0.2,
+          type: 'spring',
+          bounce: 0,
+        }}
+        className="bg-tail-zinc-50 w-[85%] rounded-2xl p-6 md:max-w-[654px] md:p-14"
+      >
         <div className="flex flex-col items-center justify-center gap-4">
           <span className="text-tail-slate-800 text-2xl font-bold md:text-5xl">
             {tieWinners.length > 1
@@ -93,8 +110,8 @@ const WinnerModal = () => {
             Setup New Game
           </button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

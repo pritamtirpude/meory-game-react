@@ -1,3 +1,4 @@
+import NumberFlow from '@number-flow/react';
 import { cn } from '../../lib/util';
 import { useMemoryStore } from '../../store/game-store';
 
@@ -17,7 +18,7 @@ const GamePlayers = () => {
         >
           <div
             className={cn(
-              'flex w-full flex-col items-center justify-between rounded-lg bg-slate-200 px-3.5 py-2.5 md:flex-row md:px-5 md:py-6',
+              'flex w-full flex-col items-center justify-between rounded-lg bg-slate-200 px-3.5 py-2.5 transition-colors md:flex-row md:px-5 md:py-6',
               currentTurn === index + 1 && 'bg-tail-amber-500'
             )}
           >
@@ -43,7 +44,8 @@ const GamePlayers = () => {
                 currentTurn === index + 1 && 'text-tail-zinc-50'
               )}
             >
-              {player.score}
+              {/* {player.score} */}
+              <NumberFlow value={player.score} />
             </span>
           </div>
           {currentTurn === index + 1 && (
