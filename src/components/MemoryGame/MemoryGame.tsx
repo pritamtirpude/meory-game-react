@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'motion/react';
 import { useEffect } from 'react';
 import { useMemoryStore } from '../../store/game-store';
 import GameHeader from '../GameHeader/GameHeader';
@@ -50,11 +51,17 @@ const MemoryGame = () => {
       <GridTiles />
       {noOfplayers > 1 && <GamePlayers />}
 
-      {isWinnerAvailable && <WinnerModal />}
+      <AnimatePresence mode="wait" initial={false}>
+        {isWinnerAvailable && <WinnerModal />}
+      </AnimatePresence>
 
-      {isSoloWinnerAvailable && <SoloWinnerModal />}
+      <AnimatePresence mode="wait" initial={false}>
+        {isSoloWinnerAvailable && <SoloWinnerModal />}
+      </AnimatePresence>
 
-      {isMobileMenuVisible && <MobileMenuModal />}
+      <AnimatePresence mode="wait" initial={false}>
+        {isMobileMenuVisible && <MobileMenuModal />}
+      </AnimatePresence>
     </div>
   );
 };

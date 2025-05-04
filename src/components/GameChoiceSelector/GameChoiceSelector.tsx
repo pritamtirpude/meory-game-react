@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
 import { useMemoryStore } from '../../store/game-store';
 import SelectGridSize from '../SelectGridSize/SelectGridSize';
@@ -17,7 +18,11 @@ const GameChoiceSelector = () => {
     <div className="bg-tail-slate-800 flex min-h-screen flex-col items-center justify-center gap-y-11 px-6 md:gap-y-16 md:px-0">
       <h1 className="text-title text-tail-zinc-50 font-bold">memory</h1>
 
-      <div className="bg-tail-zinc-50 flex w-full flex-col gap-y-6 rounded-2xl p-6 md:max-w-[664px] md:gap-y-8 md:p-14">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="bg-tail-zinc-50 flex w-full flex-col gap-y-6 rounded-2xl p-6 md:max-w-[664px] md:gap-y-8 md:p-14"
+      >
         <SelectTheme />
         <SelectPlayers />
         <SelectGridSize />
@@ -27,7 +32,7 @@ const GameChoiceSelector = () => {
         >
           Start Game
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };
